@@ -46,7 +46,7 @@ public class StockItem {
 
     /** True when stock has fallen to or below the level at which we reorder. */
     public boolean needsReorder() {
-        return quantity <= reorderLevel;
+        return quantity < reorderLevel;
     }
 
     void adjust(int delta) {
