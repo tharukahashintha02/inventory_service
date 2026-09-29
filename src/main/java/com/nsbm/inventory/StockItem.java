@@ -46,7 +46,7 @@ public class StockItem {
 
     /** True when stock has fallen to or below the level at which we reorder. */
     public boolean needsReorder() {
-        return quantity < reorderLevel;
+        return quantity <= reorderLevel;
     }
 
     void adjust(int delta) {
@@ -54,7 +54,7 @@ public class StockItem {
         if (updated < 0) {
             throw new IllegalStateException(
                     "Cannot remove " + Math.abs(delta) + " of " + sku
-                    + "; only " + quantity + " in stock");
+                            + "; only " + quantity + " in stock");
         }
         quantity = updated;
     }
