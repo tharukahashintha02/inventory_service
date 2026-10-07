@@ -19,7 +19,7 @@ on:
 
 env:
   PREDICT_URL: ${{ secrets.PREDICT_URL }}
-  POLICY: warn        # shadow | warn | block
+  POLICY: shadow       # shadow | warn | block
 
 jobs:
   risk-gate:
@@ -108,6 +108,7 @@ jobs:
             echo "**Decision:** $DECISION"
             echo "**Policy:** $POLICY"
             echo "**Builds on record:** $(echo "$RESPONSE" | jq -r '.builds_in_history')"
+            echo "**Change:** ${{ steps.features.outputs.src_churn }} source lines, ${{ steps.features.outputs.test_churn }} test lines, ${{ steps.features.outputs.files_modified }} files"
             echo ""
             echo "### Contributing factors"
             echo "$RESPONSE" | jq -r '.top_factors[] |
