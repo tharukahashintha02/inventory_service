@@ -1,5 +1,4 @@
-// demo push 1
-// demo push 3
+// git push 1
 package com.nsbm.inventory;
 
 /**
